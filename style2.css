@@ -1,5 +1,5 @@
 /* ============================================
-   CAFÉ AROMA - ESTILOS PRINCIPALES
+   MEDGRAPH ANALYTICS - ESTILOS PRINCIPALES
    Todas las medidas están en REM para escalabilidad
    Base: 1rem = 16px
    ============================================ */
@@ -26,11 +26,11 @@ body {
 /* VARIABLES CSS (Paleta de colores) */
 :root {
     --color-primary: #1A3A5C;      /* Azul oscuro */
-    --color-secondary: #2563EB;    /* Naranja */
-    --color-accent: #16A34A;       /* Naranja oscuro */
-    --color-light: #dde6fa;        /* Crema */
-    --color-mint: #ffffff;         /* Verde menta */
-    --color-error: #2563EB;        /* Rojo */
+    --color-secondary: #2563EB;    /* Azul */
+    --color-accent: #16A34A;       /* Verde */
+    --color-light: #dde6fa;        /* Azul claro */
+    --color-mint: #ffffff;         /* Blanco */
+    --color-error: #DC2626;        /* Rojo */
     --color-dark: #2C2C2C;         /* Gris oscuro */
     --color-text-light: #ECF0F1;   /* Texto claro */
 }
@@ -338,7 +338,7 @@ body {
 .form-select {
     width: 100%;
     padding: 0.75rem; /* 12px */
-    border: 0.125rem solid var(--color-error); /* 2px */
+    border: 0.125rem solid #CCCCCC; /* 2px - borde neutro por defecto */
     border-radius: 0.5rem; /* 8px */
     font-size: 1rem; /* 16px */
     transition: all 0.3s ease;
