@@ -1,5 +1,5 @@
 // ============================================
-// CAFÉ AROMA - JAVASCRIPT PRINCIPAL
+// MEDGRAPH ANALYTICS - JAVASCRIPT PRINCIPAL
 // Validaciones y funcionalidades interactivas
 // ============================================
 
@@ -182,11 +182,11 @@ document.addEventListener('DOMContentLoaded', function() {
             errorElement.textContent = mensaje;
             errorElement.style.display = 'block';
             
-            // Agregar clase de error al input correspondiente
+            // Agregar borde rojo al input correspondiente
             const inputId = errorId.replace('-error', '');
             const input = document.getElementById(inputId);
             if (input) {
-                input.style.borderColor = '#FF6B6B';
+                input.style.borderColor = '#DC2626';
             }
         }
     }
@@ -200,11 +200,11 @@ document.addEventListener('DOMContentLoaded', function() {
             errorElement.textContent = '';
             errorElement.style.display = 'none';
             
-            // Quitar clase de error del input correspondiente
+            // Restaurar borde original del input (deja que el CSS tome el control)
             const inputId = errorId.replace('-error', '');
             const input = document.getElementById(inputId);
             if (input) {
-                input.style.borderColor = '#FF6B6B'; // Color original
+                input.style.borderColor = '';
             }
         }
     }
@@ -219,10 +219,10 @@ document.addEventListener('DOMContentLoaded', function() {
             error.style.display = 'none';
         });
         
-        // Restaurar bordes de inputs
+        // Restaurar bordes de inputs (deja que el CSS tome el control)
         const inputs = form.querySelectorAll('.form-input, .form-select');
         inputs.forEach(input => {
-            input.style.borderColor = '#FF6B6B';
+            input.style.borderColor = '';
         });
     }
     
@@ -316,8 +316,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // MENSAJE DE BIENVENIDA EN CONSOLA
     // ============================================
     
-    console.log('%c¡Bienvenido a Café Aroma! ☕', 
-                'font-size: 20px; color: #FF8C42; font-weight: bold;');
+    console.log('%c¡Bienvenido a MedGraph Analytics! 🏥', 
+                'font-size: 20px; color: #2563EB; font-weight: bold;');
     console.log('%cDesarrollado con ❤️ para IHC - UPC', 
                 'font-size: 14px; color: #2C3E50;');
     
