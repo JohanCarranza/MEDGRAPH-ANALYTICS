@@ -404,3 +404,69 @@ window.addEventListener('error', function(e) {
     console.error('Error detectado:', e.message);
     // En producción, aquí podrías enviar el error a un servicio de logging
 });
+
+
+
+// Formulario beta conectado con n8n
+document.addEventListener('DOMContentLoaded', function () {
+    const betaForm = document.getElementById('reservas-form');
+    if (!betaForm || document.getElementById('correo')) return;
+
+    const submitButton = betaForm.querySelector('button[type="submit"]');
+    const emailGroup = document.createElement('div');
+    emailGroup.className = 'form-group';
+    emailGroup.innerHTML = `
+        <label for="correo" class="form-label">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" class="form-input"
+               placeholder="nombre@correo.com" autocomplete="email" required>
+        <span class="error-message" id="correo-error"></span>
+    `;
+    betaForm.insertBefore(emailGroup, submitButton);
+
+    betaForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        const nombre = document.getElementById('nombre').value.trim();
+        const correo = document.getElementById('correo').value.trim();
+        const sede = document.getElementById('sede').value;
+        const especialidades = Array.from(
+            document.querySelectorAll('input[name="especialidad"]:checked')
+        ).map(input => input.value);
+        const asesoria = document.querySelector('input[name="tipo-especialidad"]:checked');
+
+        if (!nombre || !correo || !sede || especialidades.length === 0 || !asesoria) {
+            alert('Completa todos los campos antes de enviar tu solicitud.');
+            return;
+        }
+
+        const originalText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+
+        const data = new URLSearchParams({
+            nombre,
+            correo,
+            tipoUsuario: sede,
+            interes: especialidades.join(', '),
+            mensaje: 'Prefiere asesoría ' + asesoria.value
+        });
+
+        try {
+            const response = await fetch(
+                'https://johancarranza2026.app.n8n.cloud/webhook/medgraph-solicitud-demo',
+                { method: 'POST', body: data }
+            );
+            if (!response.ok) throw new Error('No se pudo registrar la solicitud');
+
+            alert('¡Solicitud registrada! Revisa tu correo para ver la confirmación.');
+            betaForm.reset();
+        } catch (error) {
+            console.error(error);
+            alert('No pudimos enviar la solicitud. Inténtalo nuevamente.');
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+        }
+    }, true);
+});
