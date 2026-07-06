@@ -470,3 +470,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }, true);
 });
+
+                               
+
+// Acceso visible a la aplicación demo
+document.addEventListener('DOMContentLoaded', function () {
+    const demoSection = document.getElementById('demo');
+    if (!demoSection || document.getElementById('abrir-demo-medgraph')) return;
+    const link = document.createElement('a');
+    link.id = 'abrir-demo-medgraph';
+    link.href = 'demo.html';
+    link.className = 'btn-primary';
+    link.textContent = 'Abrir aplicativo MedGraph Demo';
+    link.style.display = 'inline-block';
+    link.style.marginTop = '16px';
+    const content = demoSection.querySelector('.text-content') || demoSection;
+    content.appendChild(link);
+});
+
+
+
+// Acceso visible a la aplicación demo
+document.addEventListener('DOMContentLoaded', function () {
+    const demoSection = document.getElementById('demo');
+    if (!demoSection || document.getElementById('abrir-demo-medgraph')) return;
+    const link = document.createElement('a');
+    link.id = 'abrir-demo-medgraph'; link.href = 'demo.html';
+    link.className = 'btn-primary'; link.textContent = 'Abrir aplicativo MedGraph Demo';
+    link.style.display = 'inline-block'; link.style.marginTop = '16px';
+    (demoSection.querySelector('.text-content') || demoSection).appendChild(link);
+});
