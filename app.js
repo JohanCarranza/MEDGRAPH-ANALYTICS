@@ -479,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!demoSection || document.getElementById('abrir-demo-medgraph')) return;
     const link = document.createElement('a');
     link.id = 'abrir-demo-medgraph';
-    link.href = 'demo.html';
+    link.href = 'https://johancarranza.github.io/MEDGRAPH-DEMO/';
     link.className = 'btn-primary';
     link.textContent = 'Abrir aplicativo MedGraph Demo';
     link.style.display = 'inline-block';
